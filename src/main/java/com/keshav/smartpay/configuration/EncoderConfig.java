@@ -1,4 +1,4 @@
-package com.keshav.smartPay.configuration;
+package com.keshav.smartpay.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

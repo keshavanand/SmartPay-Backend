@@ -1,8 +1,7 @@
-package com.keshav.smartPay.controllers;
+package com.keshav.smartpay.controllers;
 
-import com.keshav.smartPay.domain.dtos.RegisterDTO;
-import com.keshav.smartPay.services.AuthenticationService;
-import com.keshav.smartPay.services.UserService;
+import com.keshav.smartpay.domain.dtos.RegisterDTO;
+import com.keshav.smartpay.services.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

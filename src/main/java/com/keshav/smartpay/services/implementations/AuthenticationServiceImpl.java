@@ -1,6 +1,6 @@
-package com.keshav.smartPay.services.implementations;
+package com.keshav.smartpay.services.implementations;
 
-import com.keshav.smartPay.services.AuthenticationService;
+import com.keshav.smartpay.services.AuthenticationService;
 import org.springframework.stereotype.Service;
 
 @Service

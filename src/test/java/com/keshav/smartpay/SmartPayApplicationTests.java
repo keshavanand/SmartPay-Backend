@@ -1,4 +1,4 @@
-package com.keshav.smartPay;
+package com.keshav.smartpay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
