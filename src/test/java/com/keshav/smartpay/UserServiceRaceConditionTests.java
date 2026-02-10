@@ -1,9 +1,9 @@
 package com.keshav.smartpay;
 
-import com.keshav.smartpay.domain.dtos.RegisterDTO;
-import com.keshav.smartpay.enums.FinancialInstitutionType;
-import com.keshav.smartpay.repositories.UserRepository;
-import com.keshav.smartpay.services.UserService;
+import com.keshav.smartpay.api.auth.RegisterRequest;
+import com.keshav.smartpay.core.shared.FinancialInstitutionType;
+import com.keshav.smartpay.core.user.UserRepository;
+import com.keshav.smartpay.core.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ class UserServiceRaceConditionTests {
 
     @Test
     void testRaceConditionOnSave() throws InterruptedException {
-        RegisterDTO registerDTO = RegisterDTO.builder()
+        RegisterRequest registerDTO = RegisterRequest.builder()
                 .firstName("keshav")
                 .lastName("singh")
                 .email("keshav@gmail.com")
