@@ -46,8 +46,8 @@ public class Bucket4jRedisRateLimiterConfig {
     @Bean Supplier<BucketConfiguration> bucketConfigurationSupplier(){
         return ()-> BucketConfiguration.builder()
                 .addLimit(Bandwidth.builder()
-                        .capacity(1)
-                        .refillGreedy(1, Duration.ofSeconds(30))
+                        .capacity(2)
+                        .refillGreedy(2, Duration.ofSeconds(30))
                         .build())
                 .build();
     }

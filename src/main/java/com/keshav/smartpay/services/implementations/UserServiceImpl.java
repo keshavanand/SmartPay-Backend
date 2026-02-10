@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void register(RegisterDTO registerDTO) {
-        if(userRepository.findByEmail(registerDTO.getEmail()).isPresent()){
+        if(userRepository.findByEmail(registerDTO.getEmail().trim().toLowerCase()).isPresent()){
             throw new UserAlreadyExistException("We can’t create an account with that email. " +
                     "Please sign in, or reset your password if you already have an account."
                     ,"UNPROCESSABLE_CONTENT", HttpStatus.UNPROCESSABLE_CONTENT);

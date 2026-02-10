@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +69,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex, HttpServletRequest request){
-        log.error(ex.toString());
+        log.error(ex.getMessage());
         return new ResponseEntity<>(
                 ErrorResponse.builder()
                         .errorCode(HttpStatus.INTERNAL_SERVER_ERROR.toString())

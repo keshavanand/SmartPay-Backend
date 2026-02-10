@@ -33,4 +33,12 @@ public class User extends Auditable{
     private String email;
     @Column(nullable = false)
     private String hashedPassword;
+
+    @PrePersist
+    @PreUpdate
+    private void normalizeEmail() {
+        if (email != null) {
+            email = email.toLowerCase().trim();
+        }
+    }
 }
