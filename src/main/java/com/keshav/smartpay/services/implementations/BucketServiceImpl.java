@@ -1,18 +1,21 @@
 package com.keshav.smartpay.services.implementations;
 
 import com.keshav.smartpay.services.BucketService;
-import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
+import io.github.bucket4j.BucketConfiguration;
+import io.github.bucket4j.distributed.proxy.ProxyManager;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
 
 @Service
+@AllArgsConstructor
 public class BucketServiceImpl implements BucketService {
-    Map<String,Bucket> buckets = new ConcurrentHashMap<>();
+    private final ProxyManager<String> proxyManager;
+    private final Supplier<BucketConfiguration> bucketConfigurationSupplier;
+
     @Override
     public String extractClientKey(HttpServletRequest request) {
         return request.getRemoteAddr();
@@ -20,13 +23,7 @@ public class BucketServiceImpl implements BucketService {
 
     @Override
     public Bucket resolveBucket(HttpServletRequest request) {
-        String clientKey = extractClientKey(request);
-        return buckets.computeIfAbsent(clientKey, k ->
-                Bucket.builder()
-                        .addLimit(Bandwidth.builder()
-                                .capacity(1)
-                                .refillIntervally(1,Duration.ofSeconds(30))
-                                .build())
-                        .build());
+        String clientKey = String.format("bucket4j:%s",extractClientKey(request));
+        return proxyManager.builder().build(clientKey, bucketConfigurationSupplier);
     }
 }
