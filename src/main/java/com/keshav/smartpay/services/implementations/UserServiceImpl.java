@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final Encoder encoder;
 
     @Override
+    @Transactional
     public void register(RegisterDTO registerDTO) {
         if(userRepository.findByEmail(registerDTO.getEmail()).isPresent()){
             throw new UserAlreadyExistException("We can’t create an account with that email. " +
