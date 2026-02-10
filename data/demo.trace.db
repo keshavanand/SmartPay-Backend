@@ -1,0 +1,9 @@
+2026-02-07 18:59:57.800180-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (id uuid not null, created_date timestamp(6) not null, updated_date timestamp(6) not null, email varchar(255) not null, financial_institution_type enum ('BANK_OF_NOVA_SCOTIA','CIBC','OTHER','RBC'), first_name varchar(255) not null, hashed_password varchar(255) not null, last_name varchar(255) not null, primary key (id))"; expected "identifier"; SQL statement:
+create table user (id uuid not null, created_date timestamp(6) not null, updated_date timestamp(6) not null, email varchar(255) not null, financial_institution_type enum ('BANK_OF_NOVA_SCOTIA','CIBC','OTHER','RBC'), first_name varchar(255) not null, hashed_password varchar(255) not null, last_name varchar(255) not null, primary key (id)) [42001-240]
+2026-02-07 18:59:57.815326-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists [*]user drop constraint if exists UKob8kqyqqgmefl0aco34akdtpe"; expected "identifier"; SQL statement:
+alter table if exists user drop constraint if exists UKob8kqyqqgmefl0aco34akdtpe [42001-240]
+2026-02-07 18:59:57.816332-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists [*]user add constraint UKob8kqyqqgmefl0aco34akdtpe unique (email)"; expected "identifier"; SQL statement:
+alter table if exists user add constraint UKob8kqyqqgmefl0aco34akdtpe unique (email) [42001-240]
